@@ -10,4 +10,9 @@
     <string name="intro_value_nickname_dialog_title">닉네임 입력</string>
     <string name="intro_value_nickname_dialog_message">닉네임을 입력해주세요</string>
     <string name="intro_value_nickname_dialog_btn_ok">확인</string>
+
+    <!--MainActivity-->
+    <string name="main_value_fragment_title_home">홈 메뉴</string>
+    <string name="main_value_fragment_title_friend_list">친구 목록</string>
+    <string name="main_value_fragment_title_stash">보관함</string>
 </resources>
