@@ -15,4 +15,5 @@
     <string name="main_value_fragment_title_home">홈 메뉴</string>
     <string name="main_value_fragment_title_friend_list">친구 목록</string>
     <string name="main_value_fragment_title_stash">보관함</string>
+    <string name="test">테스트</string>
 </resources>
