@@ -1,4 +1,4 @@
-package com.swmaestro.hangman_together.main;
+package com.swmaestro.hangman_together.ui.main;
 
 import android.content.Context;
 import android.net.Uri;
@@ -6,14 +6,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.widget.Toast;
 
 import com.swmaestro.hangman_together.R;
-import com.swmaestro.hangman_together.common.HangmanData;
-import com.swmaestro.hangman_together.common.Util;
-import com.swmaestro.hangman_together.friend.FriendFragment;
-import com.swmaestro.hangman_together.home.HomeFragment;
-import com.swmaestro.hangman_together.stash.StashFragment;
+import com.swmaestro.hangman_together.ui.friend.FriendFragment;
+import com.swmaestro.hangman_together.ui.home.HomeFragment;
+import com.swmaestro.hangman_together.ui.stash.StashFragment;
 
 import java.util.List;
 import java.util.Vector;
@@ -39,7 +36,7 @@ public class MainActivity extends FragmentActivity implements HomeFragment.OnFra
         mainViewPager = (ViewPager) findViewById(R.id.mainViewPager);
         mainViewPager.setAdapter(mainPagerAdapter);
 
-        Toast.makeText(mContext, Util.getPreferences(mContext, HangmanData.KEY_USER_NICKNAME), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(mContext, Util.getPreferences(mContext, HangmanData.KEY_USER_NICKNAME), Toast.LENGTH_SHORT).show();
     }
 
     private void setFragmentList() {

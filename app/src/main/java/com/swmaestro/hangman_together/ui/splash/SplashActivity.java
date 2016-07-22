@@ -1,4 +1,4 @@
-package com.swmaestro.hangman_together.splash;
+package com.swmaestro.hangman_together.ui.splash;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,8 +14,8 @@ import com.google.gson.JsonObject;
 import com.swmaestro.hangman_together.R;
 import com.swmaestro.hangman_together.common.HangmanData;
 import com.swmaestro.hangman_together.common.Util;
-import com.swmaestro.hangman_together.intro.IntroActivity;
-import com.swmaestro.hangman_together.main.MainActivity;
+import com.swmaestro.hangman_together.ui.intro.IntroActivity;
+import com.swmaestro.hangman_together.ui.main.MainActivity;
 import com.swmaestro.hangman_together.rest.RetrofitManager;
 import com.swmaestro.hangman_together.rest.login.LoginResponse;
 import com.swmaestro.hangman_together.rest.login.LoginService;

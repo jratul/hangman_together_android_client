@@ -2,13 +2,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.swmaestro.hangman_together.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="@dimen/fragment_base_padding">
+        android:padding="@dimen/fragment_base_padding"
+        android:background="@color/colorBaseBackground"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorWhite"
+            android:gravity="center"
+            android:padding="@dimen/home_score_board_padding"
+            android:layout_marginBottom="@dimen/fragment_base_view_margin_bottom"
+            >
+            <TextView
+                android:id="@+id/home_tv_mynickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="@string/home_value_mynickname_label"
+                android:textSize="@dimen/home_score_text_size"
+                />
+            <TextView
+                android:id="@+id/home_tv_myscore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_value_myscore_label"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/home_score_text_size"
+                />
+            <TextView
+                android:id="@+id/home_tv_mycandy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_value_mycandy_label"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/home_candy_text_size"
+                />
+        </LinearLayout>
+        
+        <Button
+            android:id="@+id/home_btn_play"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/home_value_btn_play"
+            android:layout_marginBottom="@dimen/fragment_base_view_margin_bottom"
+            android:textSize="@dimen/fragment_base_btn_text_size"
+            android:background="@drawable/common_btn_selector"
+            android:textColor="@color/colorWhite"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/colorWhite"
+            android:layout_marginBottom="@dimen/fragment_base_view_margin_bottom"
+            android:padding="@dimen/home_rank_lv_padding"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_value_rank_label"
+                android:textSize="@dimen/home_rank_label_text_size"
+                android:textColor="@color/colorPrimary"
+                />
+            <ListView
+                android:id="@+id/home_lv_rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </ListView>
+
+        </LinearLayout>
 
     </LinearLayout>
 </FrameLayout>

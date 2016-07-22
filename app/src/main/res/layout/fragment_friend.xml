@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.stash.StashFragment">
+    tools:context=".ui.friend.FriendFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,6 +11,7 @@
         android:padding="@dimen/fragment_base_padding"
         android:background="@color/colorBaseBackground"
         >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -20,8 +21,15 @@
             android:padding="@dimen/home_rank_lv_padding"
             android:layout_weight="1"
             >
+            <TextView
+                android:id="@+id/friend_tv_no_friend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/friend_value_no_friend"
+                />
             <ListView
-                android:id="@+id/stash_lv_candy"
+                android:id="@+id/friend_lv_friend"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -32,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/fragment_base_view_margin_bottom"
-            android:text="@string/stash_value_btn_take_all_candy"
+            android:text="@string/friend_value_btn_add"
             android:textSize="@dimen/fragment_base_btn_text_size"
             android:background="@drawable/common_btn_selector"
             android:textColor="@color/colorWhite"

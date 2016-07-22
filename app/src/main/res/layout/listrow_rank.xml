@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:padding="@dimen/listrow_rank_padding"
+    >
+    <TextView
+        android:id="@+id/rank_row_tv_rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorRed"
+        android:textSize="@dimen/listrow_rank_rank_textSize"
+        android:layout_marginRight="@dimen/listrow_margin_between_tv"
+        />
+    <TextView
+        android:id="@+id/rank_row_tv_nickname"
+        android:layout_width="@dimen/listrow_rank_nickname_width"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/listrow_rank_nickname_textSize"
+        android:layout_marginRight="@dimen/listrow_margin_between_tv"
+        />
+
+    <TextView
+        android:id="@+id/rank_row_tv_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/listrow_rank_nickname_textSize"
+        />
+</LinearLayout>

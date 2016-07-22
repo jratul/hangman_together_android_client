@@ -8,4 +8,24 @@
 
     <!--Fragments-->
     <dimen name="fragment_base_padding">10dp</dimen>
+    <dimen name="fragment_base_view_margin_bottom">10dp</dimen>
+    <dimen name="fragment_base_btn_text_size">20sp</dimen>
+
+    <!--HomeFragment-->
+    <dimen name="home_score_board_height">100dp</dimen>
+    <dimen name="home_score_board_padding">5dp</dimen>
+    <dimen name="home_score_text_size">20sp</dimen>
+    <dimen name="home_candy_text_size">18sp</dimen>
+
+    <dimen name="home_rank_lv_padding">5dp</dimen>
+    <dimen name="home_rank_label_text_size">20sp</dimen>
+
+    <!--FriendFragment-->
+
+    <!--listrow_rank-->
+    <dimen name="listrow_rank_rank_textSize">20sp</dimen>
+    <dimen name="listrow_rank_nickname_textSize">18sp</dimen>
+    <dimen name="listrow_rank_padding">5dp</dimen>
+    <dimen name="listrow_rank_nickname_width">150dp</dimen>
+    <dimen name="listrow_margin_between_tv">5dp</dimen>
 </resources>

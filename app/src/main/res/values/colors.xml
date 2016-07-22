@@ -2,7 +2,11 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
+    <drawable name="drawableColorPrimary">#3F51B5</drawable>
+    <drawable name="drawableColorPrimaryDark">#202F5F</drawable>
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorBaseBackground">#DDDDDD</color>
+    <color name="colorRed">#FF0000</color>
 </resources>

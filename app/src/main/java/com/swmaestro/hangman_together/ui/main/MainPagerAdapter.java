@@ -1,4 +1,4 @@
-package com.swmaestro.hangman_together.main;
+package com.swmaestro.hangman_together.ui.main;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
