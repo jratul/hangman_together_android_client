@@ -1,9 +1,10 @@
-package com.swmaestro.hangman_together.rest.login;
+package com.swmaestro.hangman_together.rest.join;
 
-public class LoginResponse {
-    String message;
+public class JoinModel {
     String phoneNum;
     String nickname;
+    String lastConnectTime;
+
 
     public String getPhoneNum() {
         return phoneNum;
@@ -13,19 +14,19 @@ public class LoginResponse {
         this.phoneNum = phoneNum;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public String getNickname() {
         return nickname;
     }
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getLastConnectTime() {
+        return lastConnectTime;
+    }
+
+    public void setLastConnectTime(String lastConnectTime) {
+        this.lastConnectTime = lastConnectTime;
     }
 }

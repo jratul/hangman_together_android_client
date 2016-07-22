@@ -18,10 +18,17 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.swmaestro.hangman_together.R;
+import com.swmaestro.hangman_together.common.HangmanData;
+import com.swmaestro.hangman_together.common.Util;
 import com.swmaestro.hangman_together.main.MainActivity;
 import com.swmaestro.hangman_together.rest.RetrofitManager;
 import com.swmaestro.hangman_together.rest.checkid.CheckIdResponse;
 import com.swmaestro.hangman_together.rest.checkid.CheckIdService;
+import com.swmaestro.hangman_together.rest.join.JoinService;
+import com.swmaestro.hangman_together.rest.login.LoginResponse;
+import com.swmaestro.hangman_together.rest.login.LoginService;
+
+import java.util.Calendar;
 
 import butterknife.BindString;
 import butterknife.ButterKnife;
@@ -35,6 +42,9 @@ public class IntroActivity extends AppCompatActivity {
     @BindString(R.string.intro_value_nickname_dialog_message) String valueDialogMessage;
     @BindString(R.string.intro_value_nickname_dialog_btn_ok) String valueDialogBtnOk;
     @BindString(R.string.intro_value_connection_error) String valueConnectionErrorMessage;
+    @BindString(R.string.intro_value_login_failure) String valueLoginFailureMessage;
+    @BindString(R.string.intro_value_join_failure) String valueJoinFailureMessage;
+    @BindString(R.string.intro_value_permission_should) String valuePermissionShouldMessage;
 
     static Unbinder butterKnifeUnbinder;
 
@@ -56,10 +66,15 @@ public class IntroActivity extends AppCompatActivity {
 
     @SuppressWarnings("unused")
     @OnClick(R.id.intro_btn_login) void onBtnLoginClicked() {
-        TelephonyManager telManager = (TelephonyManager)mContext.getSystemService(mContext.TELEPHONY_SERVICE);
-        String phoneNum = telManager.getLine1Number();
+        checkPermission();
 
-        checkIdExistAndMemberProcess(phoneNum);
+        if(ContextCompat.checkSelfPermission(IntroActivity.this,
+                Manifest.permission.READ_SMS)
+                == PackageManager.PERMISSION_GRANTED) {
+            TelephonyManager telManager = (TelephonyManager)mContext.getSystemService(mContext.TELEPHONY_SERVICE);
+            String phoneNum = telManager.getLine1Number();
+            checkIdExistAndMemberProcess(phoneNum);
+        }
     }
 
     private void createNickName() {
@@ -74,9 +89,14 @@ public class IntroActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 String value = input.getText().toString();
+                if(value.trim().equals("") || value.isEmpty()) {
+                    Toast.makeText(mContext, valueDialogMessage, Toast.LENGTH_SHORT).show();
+                } else {
+                    TelephonyManager telManager = (TelephonyManager)mContext.getSystemService(mContext.TELEPHONY_SERVICE);
+                    String phoneNum = telManager.getLine1Number();
+                    requestJoin(phoneNum, value, getLastConnectTime());
+                }
                 //TODO 닉네임 체크 후 서버와 통신 후 중복 검사
-                startMainActivity();
-                finish();
             }
         });
 
@@ -114,14 +134,14 @@ public class IntroActivity extends AppCompatActivity {
                         CheckIdResponse obj = new CheckIdResponse();
                         obj = gson.fromJson(resultRaw, CheckIdResponse.class);
                         responseString = obj.getMessage();
-                        Toast.makeText(mContext, responseString, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(mContext, responseString, Toast.LENGTH_SHORT).show();
                     } catch(Exception e) {
                         Toast.makeText(mContext, valueConnectionErrorMessage, Toast.LENGTH_SHORT).show();
                         return;
                     }
 
                     if(responseString.equals("y")) {
-                        requestLogin();
+                        requestLogin(phoneNum, getLastConnectTime());
                     } else if(responseString.equals("n")) {
                         createNickName();
                     }
@@ -137,14 +157,103 @@ public class IntroActivity extends AppCompatActivity {
         }
     }
 
-    private void requestLogin() {
-        //TODO : 로그인 요청
+    private String getLastConnectTime() {
+        Calendar calendar = Calendar.getInstance();
+        String strNow = calendar.get(Calendar.YEAR) + "/" +
+                (calendar.get(Calendar.MONTH)+1) + "/" +
+                calendar.get(Calendar.DAY_OF_MONTH) + " " +
+                calendar.get(Calendar.HOUR_OF_DAY) + ":" +
+                calendar.get(Calendar.MINUTE) + ":" +
+                calendar.get(Calendar.SECOND);
 
-        startMainActivity();
+        return strNow;
     }
 
-    private void requestJoin() {
-        //TODO : 가입 요청
+    private void requestLogin(String phoneNum, String lastConnectTime) {
+        try {
+            LoginService loginService = RetrofitManager.getInstance().getService(LoginService.class);
+            Call<JsonObject> call = loginService.loginRequest(phoneNum, lastConnectTime);
+            call.enqueue(new retrofit2.Callback<JsonObject>() {
+                @Override
+                public void onResponse(Call<JsonObject> call, retrofit2.Response<JsonObject> response) {
+                    String responseString = "n";
+
+                    try {
+                        Gson gson = new Gson();
+                        String resultRaw = response.body().toString();
+                        LoginResponse obj = new LoginResponse();
+                        obj = gson.fromJson(resultRaw, LoginResponse.class);
+                        responseString = obj.getMessage();
+
+                        if(responseString.equals("y")) {
+                            String userPhoneNum = obj.getPhoneNum();
+                            String userNickname = obj.getNickname();
+                            System.out.println("usernickname : " + userNickname);
+                            Util.savePreferences(mContext, HangmanData.KEY_USER_PHONE_NUM, userPhoneNum);
+                            Util.savePreferences(mContext, HangmanData.KEY_USER_NICKNAME, userNickname);
+
+                            startMainActivity();
+                            finish();
+                        } else if(responseString.equals("n")) {
+                            Toast.makeText(mContext, valueLoginFailureMessage, Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    } catch(Exception e) {
+                        Toast.makeText(mContext, valueConnectionErrorMessage, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    Toast.makeText(mContext, valueConnectionErrorMessage, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }catch(Exception e) {
+            Log.d("intro", e.getMessage());
+        }
+    }
+
+    private void requestJoin(String phoneNum, String nickname, String lastConnectTime) {
+        try {
+            JoinService joinService = RetrofitManager.getInstance().getService(JoinService.class);
+            Call<JsonObject> call = joinService.loginRequest(phoneNum, nickname, lastConnectTime);
+            call.enqueue(new retrofit2.Callback<JsonObject>() {
+                @Override
+                public void onResponse(Call<JsonObject> call, retrofit2.Response<JsonObject> response) {
+                    String responseString = "n";
+
+                    try {
+                        Gson gson = new Gson();
+                        String resultRaw = response.body().toString();
+                        LoginResponse obj = new LoginResponse();
+                        obj = gson.fromJson(resultRaw, LoginResponse.class);
+                        responseString = obj.getMessage();
+
+                        if(responseString.equals("y")) {
+                            Util.savePreferences(mContext, HangmanData.KEY_USER_PHONE_NUM, phoneNum);
+                            Util.savePreferences(mContext, HangmanData.KEY_USER_NICKNAME, nickname);
+
+                            startMainActivity();
+                            finish();
+                        } else if(responseString.equals("n")) {
+                            Toast.makeText(mContext, valueJoinFailureMessage, Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    } catch(Exception e) {
+                        Toast.makeText(mContext, valueConnectionErrorMessage, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    Toast.makeText(mContext, valueConnectionErrorMessage, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }catch(Exception e) {
+            Log.d("intro", e.getMessage());
+        }
     }
     private void checkPermission() {
         // Here, thisActivity is the current activity
@@ -155,7 +264,10 @@ public class IntroActivity extends AppCompatActivity {
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(IntroActivity.this,
                     Manifest.permission.READ_SMS)) {
-
+                Toast.makeText(mContext, valuePermissionShouldMessage, Toast.LENGTH_SHORT).show();
+                ActivityCompat.requestPermissions(IntroActivity.this,
+                        new String[]{Manifest.permission.READ_SMS},
+                        READ_SMS);
                 // Show an expanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
