@@ -38,7 +38,6 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
-
     private boolean checkInternetConnection() {
         ConnectivityManager manager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo mobile = manager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
@@ -56,6 +55,7 @@ public class SplashActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
 
     @Override protected void onDestroy() {
         super.onDestroy();

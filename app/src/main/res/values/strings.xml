@@ -10,6 +10,7 @@
     <string name="intro_value_nickname_dialog_title">닉네임 입력</string>
     <string name="intro_value_nickname_dialog_message">닉네임을 입력해주세요</string>
     <string name="intro_value_nickname_dialog_btn_ok">확인</string>
+    <string name="intro_value_connection_error">서버와의 접속에 실패했습니다.\n잠시 후 다시 시도해 주세요</string>
 
     <!--MainActivity-->
     <string name="main_value_fragment_title_home">홈 메뉴</string>

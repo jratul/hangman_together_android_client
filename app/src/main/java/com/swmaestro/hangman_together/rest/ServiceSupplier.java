@@ -14,16 +14,17 @@ public class ServiceSupplier {
     }
 
     <T> T get(Class<T> serviceClass) {
-        String holderkey = serviceClass.getName();
+        String holderKey = serviceClass.getName();
 
         T service;
-        if(serviceHolder.containsKey(holderkey)) {
-            service = (T) serviceHolder.get(holderkey);
+        if (serviceHolder.containsKey(holderKey)) {
+            service = (T) serviceHolder.get(holderKey);
         } else {
             service = retrofit.create(serviceClass);
-            serviceHolder.put(holderkey, service);
+            serviceHolder.put(holderKey, service);
         }
 
         return service;
     }
 }
+

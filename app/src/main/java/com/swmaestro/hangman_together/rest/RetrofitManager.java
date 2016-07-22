@@ -14,9 +14,9 @@ public class RetrofitManager {
     private static RetrofitManager instance;
 
     public static RetrofitManager getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             synchronized (RetrofitManager.class) {
-                if(instance == null) {
+                if (instance == null) {
                     instance = new RetrofitManager();
                 }
             }
@@ -27,7 +27,7 @@ public class RetrofitManager {
 
     private final ServiceSupplier serviceSupplier;
 
-    protected  RetrofitManager() {
+    protected RetrofitManager() {
         RxJavaCallAdapterFactory rxAdapter = RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io());
 
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
