@@ -122,12 +122,13 @@ public class StashFragment extends Fragment {
                         //Toast.makeText(mContext, responseString, Toast.LENGTH_SHORT).show();
 
                         if(responseString.equals("y")) {
+                            List<String> stashIdx = obj.getStashIdx();
                             List<String> stashNickname = obj.getNickname();
 
                             ArrayList<StashData> dataList = new ArrayList<StashData>();
 
                             for(int i=0;i<stashNickname.size();i++) {
-                                dataList.add(new StashData(stashNickname.get(i)));
+                                dataList.add(new StashData(stashNickname.get(i),stashIdx.get(i)));
                             }
 
                             if(dataList.size() > 0) {
