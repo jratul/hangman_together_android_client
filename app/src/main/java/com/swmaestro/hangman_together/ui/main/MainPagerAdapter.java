@@ -36,7 +36,7 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return "친구 목록";
             case 2:
-                return "보관함";
+                return "캔디 보관함";
         }
         return "";
     }

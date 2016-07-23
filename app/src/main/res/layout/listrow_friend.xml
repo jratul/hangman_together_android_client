@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginRight="@dimen/listrow_friend_margin_right"
-        android:text="@string/friend_low_value_btn_give_candy"
+        android:text="@string/friend_row_value_btn_give_candy"
         android:textSize="@dimen/listrow_friend_btn_give_candy_textSize"
         android:textColor="@color/colorWhite"
         android:background="@drawable/common_btn_selector"

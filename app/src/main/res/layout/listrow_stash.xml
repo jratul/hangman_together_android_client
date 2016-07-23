@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:padding="@dimen/listrow_stash_padding">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/listrow_stash_margin_left"
+        android:layout_marginRight="@dimen/listrow_stash_margin_between_tv"
+        android:text="@string/stash_row_value_label"
+        android:textSize="@dimen/listrow_stash_label_textSize"
+        />
+
+    <TextView
+        android:id="@+id/stash_row_tv_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/listrow_stash_nickname_textSize"
+        />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <Button
+        android:id="@+id/stash_row_btn_take_candy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/listrow_stash_margin_right"
+        android:background="@drawable/common_btn_selector"
+        android:text="@string/stash_row_value_btn_take_candy"
+        android:textSize="@dimen/listrow_stash_btn_take_candy_textSize"
+        android:textColor="@color/colorWhite"
+        />
+
+
+</LinearLayout>

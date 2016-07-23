@@ -36,4 +36,13 @@
     <dimen name="listrow_friend_padding">5dp</dimen>
     <dimen name="listrow_friend_margin_left">5dp</dimen>
     <dimen name="listrow_friend_margin_right">5dp</dimen>
+
+    <!--listrow_stash-->
+    <dimen name="listrow_stash_padding">5dp</dimen>
+    <dimen name="listrow_stash_margin_left">5dp</dimen>
+    <dimen name="listrow_stash_margin_right">5dp</dimen>
+    <dimen name="listrow_stash_nickname_textSize">18sp</dimen>
+    <dimen name="listrow_stash_label_textSize">16sp</dimen>
+    <dimen name="listrow_stash_btn_take_candy_textSize">16sp</dimen>
+    <dimen name="listrow_stash_margin_between_tv">5dp</dimen>
 </resources>

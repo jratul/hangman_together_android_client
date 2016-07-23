@@ -99,9 +99,10 @@ public class FriendFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_friend, container, false);
         butterKnifeUnbinder = ButterKnife.bind(this, view);
 
+        friendAdapter = new FriendAdapter(mContext);
+
         requestGetFriend(Util.getPreferences(mContext, HangmanData.KEY_USER_PHONE_NUM));
 
-        friendAdapter = new FriendAdapter(mContext);
         lvFriend.setAdapter(friendAdapter);
 
         return view;

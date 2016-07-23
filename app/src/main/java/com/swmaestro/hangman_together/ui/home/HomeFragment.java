@@ -104,9 +104,10 @@ public class HomeFragment extends Fragment {
 
         tvMynickname.setText(Util.getPreferences(getContext(), HangmanData.KEY_USER_NICKNAME) + "님의 정보");
 
+        rankAdapter = new RankAdapter(mContext);
+
         requestHomeData(Util.getPreferences(mContext, HangmanData.KEY_USER_PHONE_NUM));
 
-        rankAdapter = new RankAdapter(mContext);
         lvRank.setAdapter(rankAdapter);
 
         return view;

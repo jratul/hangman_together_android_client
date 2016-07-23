@@ -20,6 +20,21 @@
             android:padding="@dimen/home_rank_lv_padding"
             android:layout_weight="1"
             >
+            <TextView
+                android:id="@+id/stash_tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/stash_value_title"
+                android:textColor="@color/colorBlack"
+                />
+            <TextView
+                android:id="@+id/stash_tv_no_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/stash_value_no_item"
+                />
             <ListView
                 android:id="@+id/stash_lv_candy"
                 android:layout_width="match_parent"

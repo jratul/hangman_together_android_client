@@ -32,10 +32,16 @@
     <string name="friend_value_no_friend">친구가 없습니다.\n친구를 추가해보세요.</string>
 
     <!--listrow_friend-->
-    <string name="friend_low_value_btn_give_candy">캔디 주기</string>
+    <string name="friend_row_value_btn_give_candy">캔디 주기</string>
 
     <!--StashFragment-->
     <string name="stash_value_btn_take_all_candy">캔디 모두 받기</string>
+    <string name="stash_value_title">보관함에는 캔디가 최대 30개까지 저장됩니다.</string>
+    <string name="stash_value_no_item">선물 받은 캔디가 없습니다.</string>
+
+    <!--listrow_stash-->
+    <string name="stash_row_value_label">보낸 사람 : </string>
+    <string name="stash_row_value_btn_take_candy">캔디 받기</string>
 
 
 </resources>
