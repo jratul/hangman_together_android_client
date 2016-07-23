@@ -26,16 +26,13 @@
         android:textColor="@color/colorWhite"
         android:layout_marginBottom="@dimen/fragment_base_view_margin_bottom"
         />
-    <Button
+
+    <com.facebook.login.widget.LoginButton
         android:id="@+id/intro_btn_facebook_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/intro_value_btn_facebook_login"
-        android:textSize="@dimen/fragment_base_btn_text_size"
-        android:background="@drawable/common_btn_selector"
-        android:textColor="@color/colorWhite"
+        android:paddingTop="@dimen/intro_facebook_login_btn_padding"
+        android:paddingBottom="@dimen/intro_facebook_login_btn_padding"
         />
-
-
 
 </LinearLayout>

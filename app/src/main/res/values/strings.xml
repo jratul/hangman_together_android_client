@@ -16,6 +16,9 @@
     <string name="intro_value_join_failure">회원 가입에 실패했습니다.\n잠시 후 다시 시도해 주세요.</string>
     <string name="intro_value_permission_should">SMS 권한 설정을 허용하지 않으면 게임을 플레이할 수 없습니다.</string>
     <string name="intro_value_join_nickname_already_exist">존재하는 닉네임입니다.\n다른 닉네임을 입력해주세요.</string>
+    <string name="intro_value_facebook_login_cancel">페이스북 로그인이 취소되었습니다.</string>
+    <string name="intro_value_facebook_login_failure">페이스북 로그인에 실패하였습니다.</string>
+    <string name="intro_value_no_phone_number">번호가 없는 핸드폰에서는 게임을 할 수 없습니다.</string>
 
     <!--MainActivity-->
     <string name="main_value_fragment_title_home">홈 메뉴</string>

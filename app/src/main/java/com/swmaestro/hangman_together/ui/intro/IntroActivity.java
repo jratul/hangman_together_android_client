@@ -15,22 +15,30 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.swmaestro.hangman_together.R;
 import com.swmaestro.hangman_together.common.HangmanData;
 import com.swmaestro.hangman_together.common.Util;
-import com.swmaestro.hangman_together.ui.main.MainActivity;
 import com.swmaestro.hangman_together.rest.RetrofitManager;
 import com.swmaestro.hangman_together.rest.checkid.CheckIdResponse;
 import com.swmaestro.hangman_together.rest.checkid.CheckIdService;
 import com.swmaestro.hangman_together.rest.join.JoinService;
 import com.swmaestro.hangman_together.rest.login.LoginResponse;
 import com.swmaestro.hangman_together.rest.login.LoginService;
+import com.swmaestro.hangman_together.ui.main.MainActivity;
 
 import java.util.Calendar;
 
 import butterknife.BindString;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
@@ -46,10 +54,18 @@ public class IntroActivity extends AppCompatActivity {
     @BindString(R.string.intro_value_join_failure) String valueJoinFailureMessage;
     @BindString(R.string.intro_value_permission_should) String valuePermissionShouldMessage;
     @BindString(R.string.intro_value_join_nickname_already_exist) String valueJoinNicknameAlreadyExist;
+    @BindString(R.string.intro_value_facebook_login_cancel) String valueFacebookLoginCancelMessage;
+    @BindString(R.string.intro_value_facebook_login_failure) String valueFacebookLoginFailureMessage;
+    @BindString(R.string.intro_value_no_phone_number) String valueNoPhoneNumberMessage;
+
+    @BindView(R.id.intro_btn_facebook_login) LoginButton btnFacebookLogin;
 
     static Unbinder butterKnifeUnbinder;
 
     private Context mContext;
+
+    private CallbackManager callbackManager;
+    private LoginManager loginManager;
 
     private static final int READ_SMS = 101;
     private static final int READ_PHONE_STATE = 102;
@@ -63,7 +79,33 @@ public class IntroActivity extends AppCompatActivity {
         butterKnifeUnbinder = ButterKnife.bind(this);
 
         checkPermission();
+
+        initActivity();
     }
+
+    private void initActivity() {
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
+        loginManager = LoginManager.getInstance();
+        loginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                //Toast.makeText(mContext,"fb login success", Toast.LENGTH_SHORT).show();
+                onBtnLoginClicked();
+            }
+
+            @Override
+            public void onCancel() {
+                Toast.makeText(mContext,valueFacebookLoginCancelMessage, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Toast.makeText(mContext,valueFacebookLoginFailureMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
     @SuppressWarnings("unused")
     @OnClick(R.id.intro_btn_login) void onBtnLoginClicked() {
@@ -74,9 +116,15 @@ public class IntroActivity extends AppCompatActivity {
                 == PackageManager.PERMISSION_GRANTED) {
             TelephonyManager telManager = (TelephonyManager)mContext.getSystemService(mContext.TELEPHONY_SERVICE);
             String phoneNum = telManager.getLine1Number();
-            checkIdExistAndMemberProcess(phoneNum);
+            if(phoneNum.equals("") || phoneNum.isEmpty()) {
+                Toast.makeText(mContext,valueNoPhoneNumberMessage, Toast.LENGTH_SHORT).show();
+                loginManager.logOut();
+            } else {
+                checkIdExistAndMemberProcess(phoneNum);
+            }
         }
     }
+
 
     private void createNickName() {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -105,7 +153,7 @@ public class IntroActivity extends AppCompatActivity {
 
     @SuppressWarnings("unused")
     @OnClick(R.id.intro_btn_facebook_login) void onBtnFacebookLoginClicked() {
-
+        loginManager.logInWithPublishPermissions(this,null);
     }
 
     @Override protected void onDestroy() {
@@ -236,8 +284,9 @@ public class IntroActivity extends AppCompatActivity {
 
                             startMainActivity();
                             finish();
-                        } else if(responseString.equals("s")) {
+                        } else if(responseString.equals("a")) {
                             Toast.makeText(mContext, valueJoinNicknameAlreadyExist, Toast.LENGTH_SHORT).show();
+                            //loginManager.logOut();
                             return;
                         } else if(responseString.equals("n")) {
                             Toast.makeText(mContext, valueJoinFailureMessage, Toast.LENGTH_SHORT).show();
@@ -348,5 +397,10 @@ public class IntroActivity extends AppCompatActivity {
                 return;
             }
         }
+    }
+
+    @Override protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }
