@@ -75,4 +75,8 @@ public class BaseToolbarActivity extends AppCompatActivity {
             throw new IllegalStateException("ActivityInfo cannot be null");
         }
     }
+
+    @Override public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

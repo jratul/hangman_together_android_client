@@ -33,6 +33,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/game_base_margin_bottom"
             >
             <LinearLayout
                 android:id="@+id/game_layout_win_message"
@@ -90,93 +91,103 @@
         android:background="@color/colorWhite">
         <TextView
             android:id="@+id/game_tv_spell_blank_01"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
+            android:layout_marginRight="@dimen/game_margin_between_spell"
             android:text="@string/game_value_spell_blank"
             android:textColor="@color/colorBlack"
+            android:textSize="@dimen/game_spell_text_size"
             />
         <TextView
             android:id="@+id/game_tv_spell_blank_02"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
+            android:layout_marginRight="@dimen/game_margin_between_spell"
             android:text="@string/game_value_spell_blank"
             android:textColor="@color/colorBlack"
+            android:textSize="@dimen/game_spell_text_size"
             />
         <TextView
             android:id="@+id/game_tv_spell_blank_03"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
+            android:layout_marginRight="@dimen/game_margin_between_spell"
             android:text="@string/game_value_spell_blank"
             android:textColor="@color/colorBlack"
+            android:textSize="@dimen/game_spell_text_size"
             />
         <TextView
             android:id="@+id/game_tv_spell_blank_04"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
+            android:layout_marginRight="@dimen/game_margin_between_spell"
             android:text="@string/game_value_spell_blank"
             android:textColor="@color/colorBlack"
+            android:textSize="@dimen/game_spell_text_size"
             />
         <TextView
             android:id="@+id/game_tv_spell_blank_05"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
+            android:layout_marginRight="@dimen/game_margin_between_spell"
             android:text="@string/game_value_spell_blank"
             android:textColor="@color/colorBlack"
+            android:textSize="@dimen/game_spell_text_size"
             />
         <TextView
             android:id="@+id/game_tv_spell_blank_06"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
+            android:layout_marginRight="@dimen/game_margin_between_spell"
             android:text="@string/game_value_spell_blank"
             android:textColor="@color/colorBlack"
+            android:textSize="@dimen/game_spell_text_size"
             />
         <TextView
             android:id="@+id/game_tv_spell_blank_07"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
+            android:layout_marginRight="@dimen/game_margin_between_spell"
             android:text="@string/game_value_spell_blank"
             android:textColor="@color/colorBlack"
+            android:textSize="@dimen/game_spell_text_size"
             />
         <TextView
             android:id="@+id/game_tv_spell_blank_08"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
+            android:layout_marginRight="@dimen/game_margin_between_spell"
             android:text="@string/game_value_spell_blank"
             android:textColor="@color/colorBlack"
+            android:textSize="@dimen/game_spell_text_size"
             />
         <TextView
             android:id="@+id/game_tv_spell_blank_09"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
+            android:layout_marginRight="@dimen/game_margin_between_spell"
             android:text="@string/game_value_spell_blank"
             android:textColor="@color/colorBlack"
+            android:textSize="@dimen/game_spell_text_size"
             />
         <TextView
             android:id="@+id/game_tv_spell_blank_10"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
+            android:layout_marginRight="@dimen/game_margin_between_spell"
             android:text="@string/game_value_spell_blank"
             android:textColor="@color/colorBlack"
+            android:textSize="@dimen/game_spell_text_size"
             />
     </LinearLayout>
     <LinearLayout

@@ -66,6 +66,8 @@ public class HomeFragment extends Fragment {
     private Context mContext;
     private RankAdapter rankAdapter = null;
 
+    private static final int REQUEST_CODE = 1000;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -169,7 +171,16 @@ public class HomeFragment extends Fragment {
 
     @OnClick(R.id.home_btn_play) void OnBtnPlayClicked() {
         Intent intent = new Intent(getActivity(), GameActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    @Override public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode) {
+            case REQUEST_CODE:
+                //Toast.makeText(mContext, "onactivityresult", Toast.LENGTH_SHORT).show();
+                requestHomeData(Util.getPreferences(mContext, HangmanData.KEY_USER_PHONE_NUM));
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event

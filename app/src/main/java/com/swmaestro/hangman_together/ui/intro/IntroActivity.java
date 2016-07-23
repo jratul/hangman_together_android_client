@@ -35,8 +35,6 @@ import com.swmaestro.hangman_together.rest.login.LoginResponse;
 import com.swmaestro.hangman_together.rest.login.LoginService;
 import com.swmaestro.hangman_together.ui.main.MainActivity;
 
-import java.util.Calendar;
-
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -143,7 +141,7 @@ public class IntroActivity extends AppCompatActivity {
                 } else {
                     TelephonyManager telManager = (TelephonyManager)mContext.getSystemService(mContext.TELEPHONY_SERVICE);
                     String phoneNum = telManager.getLine1Number();
-                    requestJoin(phoneNum, value, getLastConnectTime(), Util.getPreferences(mContext, HangmanData.KEY_GCM_INSTANCE_ID));
+                    requestJoin(phoneNum, value, Util.getCurrentTime(), Util.getPreferences(mContext, HangmanData.KEY_GCM_INSTANCE_ID));
                 }
             }
         });
@@ -189,7 +187,7 @@ public class IntroActivity extends AppCompatActivity {
                     }
 
                     if(responseString.equals("y")) {
-                        requestLogin(phoneNum, getLastConnectTime(), Util.getPreferences(mContext, HangmanData.KEY_GCM_INSTANCE_ID));
+                        requestLogin(phoneNum, Util.getCurrentTime(), Util.getPreferences(mContext, HangmanData.KEY_GCM_INSTANCE_ID));
                     } else if(responseString.equals("n")) {
                         createNickName();
                     }
@@ -205,17 +203,6 @@ public class IntroActivity extends AppCompatActivity {
         }
     }
 
-    private String getLastConnectTime() {
-        Calendar calendar = Calendar.getInstance();
-        String strNow = calendar.get(Calendar.YEAR) + "/" +
-                (calendar.get(Calendar.MONTH)+1) + "/" +
-                calendar.get(Calendar.DAY_OF_MONTH) + " " +
-                calendar.get(Calendar.HOUR_OF_DAY) + ":" +
-                calendar.get(Calendar.MINUTE) + ":" +
-                calendar.get(Calendar.SECOND);
-
-        return strNow;
-    }
 
     private void requestLogin(String phoneNum, String lastConnectTime, String instanceId) {
         try {
