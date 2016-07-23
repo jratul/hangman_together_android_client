@@ -14,6 +14,7 @@
     <string name="intro_value_login_failure">로그인에 실패했습니다.\n잠시 후 다시 시도해 주세요.</string>
     <string name="intro_value_join_failure">회원 가입에 실패했습니다.\n잠시 후 다시 시도해 주세요.</string>
     <string name="intro_value_permission_should">SMS 권한 설정을 허용하지 않으면 게임을 플레이할 수 없습니다.</string>
+    <string name="intro_value_join_nickname_already_exist">존재하는 닉네임입니다.\n다른 닉네임을 입력해주세요.</string>
 
     <!--MainActivity-->
     <string name="main_value_fragment_title_home">홈 메뉴</string>
@@ -30,6 +31,13 @@
     <!--FriendFragment-->
     <string name="friend_value_btn_add">친구 추가하기</string>
     <string name="friend_value_no_friend">친구가 없습니다.\n친구를 추가해보세요.</string>
+    <string name="friend_value_add_friend_dialog_title">친구 추가하기</string>
+    <string name="friend_value_add_friend_dialog_message">추가할 친구의 닉네임을 정확히 입력해주세요.</string>
+    <string name="friend_value_add_friend_dialog_btn_add">친구 추가</string>
+    <string name="friend_value_add_friend_success">친구가 추가되었습니다.</string>
+    <string name="friend_value_add_friend_not_exist">해당 닉네임을 가진 유저가 존재하지 않습니다.</string>
+    <string name="friend_value_add_friend_already_add">이미 친구로 등록되어 있는 유저입니다.</string>
+    <string name="friend_value_add_friend_not_myself">스스로를 친구로 등록할 수 없습니다.</string>
 
     <!--listrow_friend-->
     <string name="friend_row_value_btn_give_candy">캔디 주기</string>

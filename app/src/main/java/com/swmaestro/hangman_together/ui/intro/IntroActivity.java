@@ -45,6 +45,7 @@ public class IntroActivity extends AppCompatActivity {
     @BindString(R.string.intro_value_login_failure) String valueLoginFailureMessage;
     @BindString(R.string.intro_value_join_failure) String valueJoinFailureMessage;
     @BindString(R.string.intro_value_permission_should) String valuePermissionShouldMessage;
+    @BindString(R.string.intro_value_join_nickname_already_exist) String valueJoinNicknameAlreadyExist;
 
     static Unbinder butterKnifeUnbinder;
 
@@ -96,7 +97,6 @@ public class IntroActivity extends AppCompatActivity {
                     String phoneNum = telManager.getLine1Number();
                     requestJoin(phoneNum, value, getLastConnectTime());
                 }
-                //TODO 닉네임 체크 후 서버와 통신 후 중복 검사
             }
         });
 
@@ -236,6 +236,9 @@ public class IntroActivity extends AppCompatActivity {
 
                             startMainActivity();
                             finish();
+                        } else if(responseString.equals("s")) {
+                            Toast.makeText(mContext, valueJoinNicknameAlreadyExist, Toast.LENGTH_SHORT).show();
+                            return;
                         } else if(responseString.equals("n")) {
                             Toast.makeText(mContext, valueJoinFailureMessage, Toast.LENGTH_SHORT).show();
                             return;

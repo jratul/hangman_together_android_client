@@ -30,6 +30,11 @@ public class FriendAdapter extends BaseAdapter{
         }
     }
 
+    public void removeData() {
+        friendData.clear();
+        notifyDataSetChanged();
+    }
+
     @Override public int getCount() {
         return friendData.size();
     }
