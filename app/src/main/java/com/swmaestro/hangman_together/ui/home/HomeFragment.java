@@ -1,6 +1,7 @@
 package com.swmaestro.hangman_together.ui.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,7 @@ import com.swmaestro.hangman_together.common.Util;
 import com.swmaestro.hangman_together.rest.RetrofitManager;
 import com.swmaestro.hangman_together.rest.home.HomeResponse;
 import com.swmaestro.hangman_together.rest.home.HomeService;
+import com.swmaestro.hangman_together.ui.game.GameActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,7 @@ import java.util.List;
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import retrofit2.Call;
 
@@ -162,6 +165,11 @@ public class HomeFragment extends Fragment {
         }catch(Exception e) {
             Log.d("intro", e.getMessage());
         }
+    }
+
+    @OnClick(R.id.home_btn_play) void OnBtnPlayClicked() {
+        Intent intent = new Intent(getActivity(), GameActivity.class);
+        startActivity(intent);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

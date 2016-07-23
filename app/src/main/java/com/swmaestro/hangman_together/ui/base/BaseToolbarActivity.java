@@ -65,7 +65,6 @@ public class BaseToolbarActivity extends AppCompatActivity {
     protected void enableHomeAsUp() {
         Assert.assertNotNull("Toolbar is not initialized properly.", getSupportActionBar());
 
-        // TODO PARENT_ACTIVITY 가 정해졌는지 판별 후 정해지지 않으면 강제 Exception 발생 여부 논의 필요.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
