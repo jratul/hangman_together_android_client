@@ -20,6 +20,8 @@ import com.swmaestro.hangman_together.common.Util;
 import com.swmaestro.hangman_together.rest.RetrofitManager;
 import com.swmaestro.hangman_together.rest.getstash.GetStashResponse;
 import com.swmaestro.hangman_together.rest.getstash.GetStashService;
+import com.swmaestro.hangman_together.rest.takeallcandy.TakeAllCandyResponse;
+import com.swmaestro.hangman_together.rest.takeallcandy.TakeAllCandyService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,7 @@ import java.util.List;
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import retrofit2.Call;
 
@@ -40,6 +43,8 @@ import retrofit2.Call;
  */
 public class StashFragment extends Fragment {
     @BindString(R.string.intro_value_connection_error) String valueConnectionErrorMessage;
+    @BindString(R.string.stash_value_take_all_candy) String valueTakeAllCandyMessage;
+    @BindString(R.string.stash_value_stash_empty) String valueStashEmptyMessage;
 
     @BindView(R.id.stash_tv_no_item) TextView tvNoItem;
     @BindView(R.id.stash_lv_candy) ListView lvCandy;
@@ -133,8 +138,58 @@ public class StashFragment extends Fragment {
 
                             if(dataList.size() > 0) {
                                 stashAdapter.setData(dataList);
+                                tvNoItem.setVisibility(View.GONE);
+                            } else {
+                                tvNoItem.setVisibility(View.VISIBLE);
                             }
 
+                        } else if(responseString.equals("n")) {
+
+                        }
+                    } catch(Exception e) {
+                        Toast.makeText(mContext, valueConnectionErrorMessage, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    Toast.makeText(mContext, valueConnectionErrorMessage, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }catch(Exception e) {
+            Log.d("intro", e.getMessage());
+        }
+    }
+
+    @OnClick(R.id.stash_btn_take_all_candy) void OnBtnTakeAllCandyClicked() {
+        if(stashAdapter.getCount() > 0) {
+            requestTakeAllCandy(Util.getPreferences(mContext, HangmanData.KEY_USER_PHONE_NUM));
+        } else {
+            Toast.makeText(mContext, valueStashEmptyMessage, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void requestTakeAllCandy(String phoneNum) {
+        try {
+            TakeAllCandyService takeAllCandyService = RetrofitManager.getInstance().getService(TakeAllCandyService.class);
+            Call<JsonObject> call = takeAllCandyService.takeAllCandyRequest(phoneNum);
+            call.enqueue(new retrofit2.Callback<JsonObject>() {
+                @Override public void onResponse(Call<JsonObject> call, retrofit2.Response<JsonObject> response) {
+                    String responseString = "n";
+
+                    try {
+                        Gson gson = new Gson();
+                        String resultRaw = response.body().toString();
+                        TakeAllCandyResponse obj = new TakeAllCandyResponse();
+                        obj = gson.fromJson(resultRaw, TakeAllCandyResponse.class);
+                        responseString = obj.getMessage();
+                        //Toast.makeText(mContext, responseString, Toast.LENGTH_SHORT).show();
+
+                        if(responseString.equals("y")) {
+                            Toast.makeText(mContext, valueTakeAllCandyMessage, Toast.LENGTH_SHORT).show();
+                            stashAdapter.removeData();
+                            requestStashList(phoneNum);
                         } else if(responseString.equals("n")) {
 
                         }

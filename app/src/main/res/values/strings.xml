@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">hangman_together</string>
+    <string name="facebook_app_id">311899562490216</string>
 
     <!--SplashActivity-->
     <string name="splash_value_error_internet_connection">인터넷이 연결되어 있지 않아 앱을 종료합니다.</string>
@@ -47,6 +48,8 @@
     <string name="stash_value_btn_take_all_candy">캔디 모두 받기</string>
     <string name="stash_value_title">보관함에는 캔디가 최대 30개까지 저장됩니다.</string>
     <string name="stash_value_no_item">선물 받은 캔디가 없습니다.</string>
+    <string name="stash_value_take_all_candy">친구에게 받은 캔디를 모두 얻었습니다.</string>
+    <string name="stash_value_stash_empty">보관함에 받을 캔디가 없습니다.</string>
 
     <!--listrow_stash-->
     <string name="stash_row_value_label">보낸 사람 : </string>

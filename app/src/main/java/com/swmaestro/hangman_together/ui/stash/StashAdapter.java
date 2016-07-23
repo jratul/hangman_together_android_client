@@ -39,6 +39,11 @@ public class StashAdapter extends BaseAdapter {
         }
     }
 
+    public void removeData() {
+        stashData.clear();
+        notifyDataSetChanged();
+    }
+
     @Override public int getCount() {
         return stashData.size();
     }

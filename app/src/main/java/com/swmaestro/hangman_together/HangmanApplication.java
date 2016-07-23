@@ -2,6 +2,8 @@ package com.swmaestro.hangman_together;
 
 import android.app.Application;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 public class HangmanApplication extends Application {
@@ -15,6 +17,9 @@ public class HangmanApplication extends Application {
     public void onCreate() {
         super.onCreate();
         appInstance = this;
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
 
         Fresco.initialize(appInstance);
     }

@@ -150,6 +150,8 @@ public class FriendFragment extends Fragment {
                             if(dataList.size() > 0) {
                                 friendAdapter.setData(dataList);
                                 tvNoFriend.setVisibility(View.GONE);
+                            } else {
+                                tvNoFriend.setVisibility(View.VISIBLE);
                             }
                         } else if(responseString.equals("n")) {
 

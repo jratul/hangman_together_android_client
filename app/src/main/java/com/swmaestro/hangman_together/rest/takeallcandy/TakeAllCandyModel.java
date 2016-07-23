@@ -1,7 +1,14 @@
 package com.swmaestro.hangman_together.rest.takeallcandy;
 
-/**
- * Created by yky on 2016-07-23.
- */
 public class TakeAllCandyModel {
+    String phoneNum;
+
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
 }
