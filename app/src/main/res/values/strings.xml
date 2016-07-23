@@ -30,6 +30,7 @@
 
     <!--FriendFragment-->
     <string name="friend_value_btn_add">친구 추가하기</string>
+    <string name="friend_value_comment_give_candy">캔디는 하루에 친구 1명 당 1번만 선물할 수 있습니다.</string>
     <string name="friend_value_no_friend">친구가 없습니다.\n친구를 추가해보세요.</string>
     <string name="friend_value_add_friend_dialog_title">친구 추가하기</string>
     <string name="friend_value_add_friend_dialog_message">추가할 친구의 닉네임을 정확히 입력해주세요.</string>
