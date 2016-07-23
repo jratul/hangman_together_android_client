@@ -8,5 +8,6 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
     <color name="colorBaseBackground">#DDDDDD</color>
+    <color name="colorBtnAlreadyGaveCandy">#888888</color>
     <color name="colorRed">#FF0000</color>
 </resources>

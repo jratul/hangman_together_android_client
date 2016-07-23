@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:padding="@dimen/listrow_friend_padding">
+    <TextView
+        android:id="@+id/friend_row_tv_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/listrow_friend_margin_left"
+        android:textSize="@dimen/listrow_friend_nickname_textSize"
+        android:textColor="@color/colorBlack"
+        android:layout_weight="1"
+        />
+
+    <Button
+        android:id="@+id/friend_row_btn_give_candy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginRight="@dimen/listrow_friend_margin_right"
+        android:text="@string/friend_low_value_btn_give_candy"
+        android:textSize="@dimen/listrow_friend_btn_give_candy_textSize"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/common_btn_selector"
+        />
+</LinearLayout>

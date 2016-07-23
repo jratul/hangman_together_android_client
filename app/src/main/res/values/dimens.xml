@@ -26,6 +26,14 @@
     <dimen name="listrow_rank_rank_textSize">20sp</dimen>
     <dimen name="listrow_rank_nickname_textSize">18sp</dimen>
     <dimen name="listrow_rank_padding">5dp</dimen>
+    <dimen name="listrow_rank_rank_width">30dp</dimen>
     <dimen name="listrow_rank_nickname_width">150dp</dimen>
     <dimen name="listrow_margin_between_tv">5dp</dimen>
+
+    <!--listrow_friend-->
+    <dimen name="listrow_friend_nickname_textSize">18sp</dimen>
+    <dimen name="listrow_friend_btn_give_candy_textSize">16sp</dimen>
+    <dimen name="listrow_friend_padding">5dp</dimen>
+    <dimen name="listrow_friend_margin_left">5dp</dimen>
+    <dimen name="listrow_friend_margin_right">5dp</dimen>
 </resources>

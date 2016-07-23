@@ -31,7 +31,11 @@
     <string name="friend_value_btn_add">친구 추가하기</string>
     <string name="friend_value_no_friend">친구가 없습니다.\n친구를 추가해보세요.</string>
 
+    <!--listrow_friend-->
+    <string name="friend_low_value_btn_give_candy">캔디 주기</string>
+
     <!--StashFragment-->
     <string name="stash_value_btn_take_all_candy">캔디 모두 받기</string>
+
 
 </resources>

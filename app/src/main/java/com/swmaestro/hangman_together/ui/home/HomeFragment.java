@@ -117,8 +117,7 @@ public class HomeFragment extends Fragment {
             HomeService homeService = RetrofitManager.getInstance().getService(HomeService.class);
             Call<JsonObject> call = homeService.homeRequest(phoneNum);
             call.enqueue(new retrofit2.Callback<JsonObject>() {
-                @Override
-                public void onResponse(Call<JsonObject> call, retrofit2.Response<JsonObject> response) {
+                @Override public void onResponse(Call<JsonObject> call, retrofit2.Response<JsonObject> response) {
                     String responseString = "n";
 
                     try {
