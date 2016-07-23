@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">hangman_together</string>
     <string name="facebook_app_id">311899562490216</string>
+    <!--<string name="gcm_defaultSenderId">638732134425</string>-->
 
     <!--SplashActivity-->
     <string name="splash_value_error_internet_connection">인터넷이 연결되어 있지 않아 앱을 종료합니다.</string>
@@ -57,6 +58,9 @@
     <!--listrow_stash-->
     <string name="stash_row_value_label">보낸 사람 : </string>
     <string name="stash_row_value_btn_take_candy">캔디 받기</string>
+
+    <!--GameActivity-->
+    <string name="game_value_toolbar_title">Hangman 게임 중</string>
 
 
 </resources>

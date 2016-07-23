@@ -10,4 +10,5 @@
     <color name="colorBaseBackground">#DDDDDD</color>
     <color name="colorBtnAlreadyGaveCandy">#888888</color>
     <color name="colorRed">#FF0000</color>
+    <color name="colorIntroBg">#d7d7d5</color>
 </resources>

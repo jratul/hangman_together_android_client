@@ -11,5 +11,5 @@ import retrofit2.http.POST;
 public interface LoginService {
     @FormUrlEncoded
     @POST("/login")
-    Call<JsonObject> loginRequest(@Field("phoneNum") String phoneNum, @Field("lastConnectTime") String lastConnectTime);
+    Call<JsonObject> loginRequest(@Field("phoneNum") String phoneNum, @Field("lastConnectTime") String lastConnectTime, @Field("instanceId") String instanceId);
 }

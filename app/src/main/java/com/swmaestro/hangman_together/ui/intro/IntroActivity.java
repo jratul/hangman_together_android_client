@@ -143,7 +143,7 @@ public class IntroActivity extends AppCompatActivity {
                 } else {
                     TelephonyManager telManager = (TelephonyManager)mContext.getSystemService(mContext.TELEPHONY_SERVICE);
                     String phoneNum = telManager.getLine1Number();
-                    requestJoin(phoneNum, value, getLastConnectTime());
+                    requestJoin(phoneNum, value, getLastConnectTime(), Util.getPreferences(mContext, HangmanData.KEY_GCM_INSTANCE_ID));
                 }
             }
         });
@@ -189,7 +189,7 @@ public class IntroActivity extends AppCompatActivity {
                     }
 
                     if(responseString.equals("y")) {
-                        requestLogin(phoneNum, getLastConnectTime());
+                        requestLogin(phoneNum, getLastConnectTime(), Util.getPreferences(mContext, HangmanData.KEY_GCM_INSTANCE_ID));
                     } else if(responseString.equals("n")) {
                         createNickName();
                     }
@@ -217,10 +217,10 @@ public class IntroActivity extends AppCompatActivity {
         return strNow;
     }
 
-    private void requestLogin(String phoneNum, String lastConnectTime) {
+    private void requestLogin(String phoneNum, String lastConnectTime, String instanceId) {
         try {
             LoginService loginService = RetrofitManager.getInstance().getService(LoginService.class);
-            Call<JsonObject> call = loginService.loginRequest(phoneNum, lastConnectTime);
+            Call<JsonObject> call = loginService.loginRequest(phoneNum, lastConnectTime,instanceId);
             call.enqueue(new retrofit2.Callback<JsonObject>() {
                 @Override
                 public void onResponse(Call<JsonObject> call, retrofit2.Response<JsonObject> response) {
@@ -262,10 +262,10 @@ public class IntroActivity extends AppCompatActivity {
         }
     }
 
-    private void requestJoin(String phoneNum, String nickname, String lastConnectTime) {
+    private void requestJoin(String phoneNum, String nickname, String lastConnectTime, String instanceId) {
         try {
             JoinService joinService = RetrofitManager.getInstance().getService(JoinService.class);
-            Call<JsonObject> call = joinService.loginRequest(phoneNum, nickname, lastConnectTime);
+            Call<JsonObject> call = joinService.joinRequest(phoneNum, nickname, lastConnectTime, instanceId);
             call.enqueue(new retrofit2.Callback<JsonObject>() {
                 @Override
                 public void onResponse(Call<JsonObject> call, retrofit2.Response<JsonObject> response) {

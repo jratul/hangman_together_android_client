@@ -5,6 +5,7 @@
 
     <!--IntroActivity-->
     <dimen name="intro_facebook_login_btn_padding">15dp</dimen>
+    <dimen name="intro_logo_margin_bottom">50dp</dimen>
 
     <!--MainActivity-->
     <dimen name="main_title_text_size">20sp</dimen>
@@ -48,4 +49,7 @@
     <dimen name="listrow_stash_label_textSize">16sp</dimen>
     <dimen name="listrow_stash_btn_take_candy_textSize">16sp</dimen>
     <dimen name="listrow_stash_margin_between_tv">5dp</dimen>
+
+    <!--GameActivity-->
+    <dimen name="game_base_marginBottom">10dp</dimen>
 </resources>

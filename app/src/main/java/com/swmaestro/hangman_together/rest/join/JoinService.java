@@ -10,5 +10,5 @@ import retrofit2.http.POST;
 public interface JoinService {
     @FormUrlEncoded
     @POST("/join")
-    Call<JsonObject> loginRequest(@Field("phoneNum") String phoneNum, @Field("nickname") String nickname, @Field("lastConnectTime") String lastConnectTime);
+    Call<JsonObject> joinRequest(@Field("phoneNum") String phoneNum, @Field("nickname") String nickname, @Field("lastConnectTime") String lastConnectTime, @Field("instanceId") String instanceId);
 }

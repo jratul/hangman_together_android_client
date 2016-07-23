@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "638732134425",
+    "project_id": "hangmantogether"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638732134425:android:dec52b0068b4fdb3",
+        "android_client_info": {
+          "package_name": "com.swmaestro.hangman_together"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLCz8oVhFlHcpZMzPXH2mZdrI0KJXS7ZQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

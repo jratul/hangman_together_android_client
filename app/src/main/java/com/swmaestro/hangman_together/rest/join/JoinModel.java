@@ -4,7 +4,7 @@ public class JoinModel {
     String phoneNum;
     String nickname;
     String lastConnectTime;
-
+    String instanceId;
 
     public String getPhoneNum() {
         return phoneNum;
@@ -28,5 +28,13 @@ public class JoinModel {
 
     public void setLastConnectTime(String lastConnectTime) {
         this.lastConnectTime = lastConnectTime;
+    }
+
+    public String getInstanceId() {
+        return instanceId;
+    }
+
+    public void setInstanceId(String instanceId) {
+        this.instanceId = instanceId;
     }
 }

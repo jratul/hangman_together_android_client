@@ -9,11 +9,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@color/colorIntroBg"
     tools:context=".ui.intro.IntroActivity">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/intro_logo"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="@dimen/intro_logo_margin_bottom"
         />
 
     <Button
