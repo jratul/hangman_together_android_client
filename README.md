@@ -50,29 +50,29 @@
 
 ## 프로젝트 구조
 **app package**  
-    **common** : savePreference, 현재 시각 가져오기 등 자주 쓰이는 static 메서드, 전역 변수 등 관리  
-    **rest** : Retrofit으로 서버와 통신하기 위한 부분  
-    **addfriend** : 친구 추가  
-    **checkid** : 로그인 시 계정이 있는지 확인  
-    **endgame** : 게임 종료 시 점수 갱신  
-    **getfriend** : 친구 목록 가져오기  
-    **getstash** : 캔디 보관함 목록 가져오기  
-    **givecandy** : 친구에게 캔디 주기  
-    **home** : 홈 화면을 위한 내 점수, 내 캔디, 랭킹 목록 가져오기  
-    **join** : 가입하기  
-    **login** : 로그인하기  
-    **startgame** : 게임 시작 시, 단어를 가져오고 캔디 소모  
-    **takeallcandy** : 보관함에 있는 모든 캔디를 받기  
-    **takecandy** : 보관함에 있는 캔디 하나 받기  
-  **ui** : 안드로이드 ui, GCM 관련, Application  
-    **base** : 툴바를 사용하는 액티비티들이 상속할 수 있는 BaseActivity  
-    **friend** : 친구 목록 Fragment, 친구 목록 Adapter, 친구 목록 데이터 모델  
-    **game** : 행맨 게임 플레이 Activity  
-    **home** : 홈 Fragment, 랭킹 목록 Adpater, 랭킹 목록 데이터 모델  
-    **intro** : 로그인 화면  
-    **main** : 메인 View Pager (홈 화면, 친구 목록, 보관함으로 구성), view pager adapter  
-    **splash** : Splash 화면  
-    **stash** : 보관함 Fragment, 보관함 목록 Adpater, 보관함 목록 데이터 모델  
+        **common** : savePreference, 현재 시각 가져오기 등 자주 쓰이는 static 메서드, 전역 변수 등 관리  
+        **rest** : Retrofit으로 서버와 통신하기 위한 부분  
+                **addfriend** : 친구 추가  
+                **checkid** : 로그인 시 계정이 있는지 확인  
+                **endgame** : 게임 종료 시 점수 갱신  
+                **getfriend** : 친구 목록 가져오기  
+                **getstash** : 캔디 보관함 목록 가져오기  
+                **givecandy** : 친구에게 캔디 주기  
+                **home** : 홈 화면을 위한 내 점수, 내 캔디, 랭킹 목록 가져오기  
+                **join** : 가입하기  
+                **login** : 로그인하기  
+                **startgame** : 게임 시작 시, 단어를 가져오고 캔디 소모  
+                **takeallcandy** : 보관함에 있는 모든 캔디를 받기  
+                **takecandy** : 보관함에 있는 캔디 하나 받기  
+        **ui** : 안드로이드 ui, GCM 관련, Application  
+                **base** : 툴바를 사용하는 액티비티들이 상속할 수 있는 BaseActivity  
+                **friend** : 친구 목록 Fragment, 친구 목록 Adapter, 친구 목록 데이터 모델  
+                **game** : 행맨 게임 플레이 Activity  
+                **home** : 홈 Fragment, 랭킹 목록 Adpater, 랭킹 목록 데이터 모델  
+                **intro** : 로그인 화면  
+                **main** : 메인 View Pager (홈 화면, 친구 목록, 보관함으로 구성), view pager adapter  
+                **splash** : Splash 화면  
+                **stash** : 보관함 Fragment, 보관함 목록 Adpater, 보관함 목록 데이터 모델  
     
 ## 앱의 흐름
 1. 앱을 실행하면 스플래시 화면이 실행되는데 이 때 사용자가 로그인을 한 상태인지 확인합니다.
