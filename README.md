@@ -50,8 +50,8 @@
 
 ## 프로젝트 구조
 **app package**  
-  **common** : savePreference, 현재 시각 가져오기 등 자주 쓰이는 static 메서드, 전역 변수 등 관리  
-  **rest** : Retrofit으로 서버와 통신하기 위한 부분  
+    **common** : savePreference, 현재 시각 가져오기 등 자주 쓰이는 static 메서드, 전역 변수 등 관리  
+    **rest** : Retrofit으로 서버와 통신하기 위한 부분  
     **addfriend** : 친구 추가  
     **checkid** : 로그인 시 계정이 있는지 확인  
     **endgame** : 게임 종료 시 점수 갱신  
