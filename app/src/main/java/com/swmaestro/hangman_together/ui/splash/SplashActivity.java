@@ -164,7 +164,8 @@ public class SplashActivity extends AppCompatActivity {
                             startIntroActivity();
                         }
                     } catch(Exception e) {
-                        Toast.makeText(mContext, valueConnectionErrorMessage + " exception", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, valueConnectionErrorMessage, Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
                         finish();
                         return;
                     }

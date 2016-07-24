@@ -28,6 +28,12 @@ public class RankAdapter extends BaseAdapter {
             notifyDataSetChanged();
         }
     }
+
+    public void removeData() {
+        rankData.clear();
+        notifyDataSetChanged();
+    }
+
     @Override public int getCount() {
         return rankData.size();
     }

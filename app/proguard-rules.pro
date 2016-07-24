@@ -17,19 +17,98 @@
 #}
 
 
-# Retrofit 2.X
-## https://square.github.io/retrofit/ ##
-
--dontwarn retrofit2.**
--keep class retrofit2.** { *; }
+########--------Retrofit + RxJava--------#########
+-dontwarn retrofit.**
+-keep class retrofit.** { *; }
+-dontwarn sun.misc.Unsafe
+-dontwarn com.octo.android.robospice.retrofit.RetrofitJackson**
+-dontwarn retrofit.appengine.UrlFetchClient
 -keepattributes Signature
 -keepattributes Exceptions
-
 -keepclasseswithmembers class * {
-    @retrofit2.http.* <methods>;
+    @retrofit.http.* <methods>;
 }
+-keep class com.google.gson.** { *; }
+-keep class com.google.inject.** { *; }
+-keep class org.apache.http.** { *; }
+-keep class org.apache.james.mime4j.** { *; }
+-keep class javax.inject.** { *; }
+-keep class retrofit.** { *; }
+-dontwarn org.apache.http.**
+-dontwarn android.net.http.AndroidHttpClient
+-dontwarn retrofit.**
+
+-dontwarn sun.misc.**
+
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+   long producerIndex;
+   long consumerIndex;
+}
+
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+   long producerNode;
+   long consumerNode;
+}
+
+
+# ALSO REMEMBER KEEPING YOUR MODEL CLASSES
+-keep class com.your.package.model.** { *; }
 
 ## Retrolambda specific rules ##
 
 # as per official recommendation: https://github.com/evant/gradle-retrolambda#proguard
 -dontwarn java.lang.invoke.*
+
+ # butter knife
+-keep class butterknife.** { *; }
+-dontwarn butterknife.internal.**
+-keep class **$$ViewBinder { *; }
+
+-keepclasseswithmembernames class * {
+    @butterknife.* <fields>;
+}
+
+-keepclasseswithmembernames class * {
+    @butterknife.* <methods>;
+}
+
+#build.gradle
+#
+#    compile 'io.reactivex:rxandroid:1.0.1'
+#    compile 'io.reactivex:rxjava:1.0.14'
+#    compile 'io.reactivex:rxjava-math:1.0.0'
+#    compile 'com.jakewharton.rxbinding:rxbinding:0.2.0'
+
+# rxjava
+-keep class rx.schedulers.Schedulers {
+    public static <methods>;
+}
+-keep class rx.schedulers.ImmediateScheduler {
+    public <methods>;
+}
+-keep class rx.schedulers.TestScheduler {
+    public <methods>;
+}
+-keep class rx.schedulers.Schedulers {
+    public static ** test();
+}
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+    long producerIndex;
+    long consumerIndex;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+    long producerNode;
+    long consumerNode;
+}
+
+-keepattributes Signature
+-keepattributes Annotation
+-keep class okhttp3.*
+-keep interface okhttp3.*
+-dontwarn okhttp3.**
+-dontwarn com.facebook.**
+-dontwarn okio.**
+-dontwarn rx.internal.util.**
+
+
+

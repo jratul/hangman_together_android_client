@@ -179,6 +179,7 @@ public class HomeFragment extends Fragment {
         switch(requestCode) {
             case REQUEST_CODE:
                 //Toast.makeText(mContext, "onactivityresult", Toast.LENGTH_SHORT).show();
+                rankAdapter.removeData();
                 requestHomeData(Util.getPreferences(mContext, HangmanData.KEY_USER_PHONE_NUM));
         }
     }

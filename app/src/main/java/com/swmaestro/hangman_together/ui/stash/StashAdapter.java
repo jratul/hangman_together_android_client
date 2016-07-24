@@ -76,9 +76,11 @@ public class StashAdapter extends BaseAdapter {
 
         holder.tvNickname.setText(dataUnit.nickname);
 
-        holder.btnTakeCandy.setOnClickListener(v -> {
-            requestTakeCandy(dataUnit.stashIdx, i);
-
+        holder.btnTakeCandy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requestTakeCandy(dataUnit.stashIdx, i);
+            }
         });
 
         return view;
