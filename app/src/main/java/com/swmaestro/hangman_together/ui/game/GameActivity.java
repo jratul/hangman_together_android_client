@@ -138,6 +138,7 @@ public class GameActivity extends BaseToolbarActivity implements View.OnClickLis
 
     private void requestStartGame(String phoneNum) {
         try {
+            isPlaying = false;
             StartGameService startGameService = RetrofitManager.getInstance().getService(StartGameService.class);
             Call<JsonObject> call = startGameService.startGameRequest(phoneNum, Util.getCurrentTime());
             call.enqueue(new retrofit2.Callback<JsonObject>() {
@@ -165,7 +166,9 @@ public class GameActivity extends BaseToolbarActivity implements View.OnClickLis
                             for (int i = 0; i < wordLength; i++) {
                                 spellList.add(Character.toString(gameWord.charAt(i)));
                             }
+                            isPlaying = true;
                         } else if(responseString.equals("nc")) {
+
                             Toast.makeText(mContext, valueNoCandyMessage, Toast.LENGTH_SHORT).show();
                             finish();
                         } else if(responseString.equals("n")) {
@@ -261,6 +264,7 @@ public class GameActivity extends BaseToolbarActivity implements View.OnClickLis
     }
 
     private void gameWin() {
+        //isPlaying = false;
         imgvHangman.setImageResource(R.drawable.hang_vic);
         tvWinScore.setText(score + valueWinScoreComment);
         layoutWinMessage.setVisibility(View.VISIBLE);
@@ -268,6 +272,7 @@ public class GameActivity extends BaseToolbarActivity implements View.OnClickLis
     }
 
     private void gameLose() {
+        //isPlaying = false;
         tvLoseScore.setText((score * (-1)) + valueLoseScoreComment);
         layoutLoseMessage.setVisibility(View.VISIBLE);
         requestEndGame(Util.getPreferences(mContext, HangmanData.KEY_USER_PHONE_NUM));
@@ -385,141 +390,143 @@ public class GameActivity extends BaseToolbarActivity implements View.OnClickLis
         spellBtnList.add(btnAlphaZ);
     }
 
-    @Override public void onClick(View view) {
+    @Override
+    public void onClick(View view) {
         int viewId = view.getId();
-        view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-        view.setClickable(false);
-
-        switch(viewId) {
-            case R.id.game_btn_alpha_a:
-                checkSpellExistAndProcess("a");
-                pushAvailable.set(0, false);
-                break;
-            case R.id.game_btn_alpha_b:
-                checkSpellExistAndProcess("b");
-                pushAvailable.set(1, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_c:
-                checkSpellExistAndProcess("c");
-                pushAvailable.set(2, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_d:
-                checkSpellExistAndProcess("d");
-                pushAvailable.set(3, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_e:
-                checkSpellExistAndProcess("e");
-                pushAvailable.set(4, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_f:
-                checkSpellExistAndProcess("f");
-                pushAvailable.set(5, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_g:
-                checkSpellExistAndProcess("g");
-                pushAvailable.set(6, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_h:
-                checkSpellExistAndProcess("h");
-                pushAvailable.set(7, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_i:
-                checkSpellExistAndProcess("i");
-                pushAvailable.set(8, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_j:
-                checkSpellExistAndProcess("j");
-                pushAvailable.set(9, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_k:
-                checkSpellExistAndProcess("k");
-                pushAvailable.set(10, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_l:
-                checkSpellExistAndProcess("l");
-                pushAvailable.set(11, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_m:
-                checkSpellExistAndProcess("m");
-                pushAvailable.set(12, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_n:
-                checkSpellExistAndProcess("n");
-                pushAvailable.set(13, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_o:
-                checkSpellExistAndProcess("o");
-                pushAvailable.set(14, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_p:
-                checkSpellExistAndProcess("p");
-                pushAvailable.set(15, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_q:
-                checkSpellExistAndProcess("q");
-                pushAvailable.set(16, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_r:
-                checkSpellExistAndProcess("r");
-                pushAvailable.set(17, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_s:
-                checkSpellExistAndProcess("s");
-                pushAvailable.set(18, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_t:
-                checkSpellExistAndProcess("t");
-                pushAvailable.set(19, false);
-                view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_u:
-                checkSpellExistAndProcess("u");
-                pushAvailable.set(20, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_v:
-                checkSpellExistAndProcess("v");
-                pushAvailable.set(21, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_w:
-                checkSpellExistAndProcess("w");
-                pushAvailable.set(22, false);
-                view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_x:
-                checkSpellExistAndProcess("x");
-                pushAvailable.set(23, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_y:
-                checkSpellExistAndProcess("y");
-                pushAvailable.set(24, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
-            case R.id.game_btn_alpha_z:
-                checkSpellExistAndProcess("z");
-                pushAvailable.set(25, false);
-                //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
-                break;
+        if (isPlaying) {
+            view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+            view.setClickable(false);
+            switch (viewId) {
+                case R.id.game_btn_alpha_a:
+                    checkSpellExistAndProcess("a");
+                    pushAvailable.set(0, false);
+                    break;
+                case R.id.game_btn_alpha_b:
+                    checkSpellExistAndProcess("b");
+                    pushAvailable.set(1, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_c:
+                    checkSpellExistAndProcess("c");
+                    pushAvailable.set(2, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_d:
+                    checkSpellExistAndProcess("d");
+                    pushAvailable.set(3, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_e:
+                    checkSpellExistAndProcess("e");
+                    pushAvailable.set(4, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_f:
+                    checkSpellExistAndProcess("f");
+                    pushAvailable.set(5, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_g:
+                    checkSpellExistAndProcess("g");
+                    pushAvailable.set(6, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_h:
+                    checkSpellExistAndProcess("h");
+                    pushAvailable.set(7, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_i:
+                    checkSpellExistAndProcess("i");
+                    pushAvailable.set(8, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_j:
+                    checkSpellExistAndProcess("j");
+                    pushAvailable.set(9, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_k:
+                    checkSpellExistAndProcess("k");
+                    pushAvailable.set(10, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_l:
+                    checkSpellExistAndProcess("l");
+                    pushAvailable.set(11, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_m:
+                    checkSpellExistAndProcess("m");
+                    pushAvailable.set(12, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_n:
+                    checkSpellExistAndProcess("n");
+                    pushAvailable.set(13, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_o:
+                    checkSpellExistAndProcess("o");
+                    pushAvailable.set(14, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_p:
+                    checkSpellExistAndProcess("p");
+                    pushAvailable.set(15, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_q:
+                    checkSpellExistAndProcess("q");
+                    pushAvailable.set(16, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_r:
+                    checkSpellExistAndProcess("r");
+                    pushAvailable.set(17, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_s:
+                    checkSpellExistAndProcess("s");
+                    pushAvailable.set(18, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_t:
+                    checkSpellExistAndProcess("t");
+                    pushAvailable.set(19, false);
+                    view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_u:
+                    checkSpellExistAndProcess("u");
+                    pushAvailable.set(20, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_v:
+                    checkSpellExistAndProcess("v");
+                    pushAvailable.set(21, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_w:
+                    checkSpellExistAndProcess("w");
+                    pushAvailable.set(22, false);
+                    view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_x:
+                    checkSpellExistAndProcess("x");
+                    pushAvailable.set(23, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_y:
+                    checkSpellExistAndProcess("y");
+                    pushAvailable.set(24, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+                case R.id.game_btn_alpha_z:
+                    checkSpellExistAndProcess("z");
+                    pushAvailable.set(25, false);
+                    //view.setBackgroundResource(R.color.colorBtnAlreadyGaveCandy);
+                    break;
+            }
         }
     }
 }
